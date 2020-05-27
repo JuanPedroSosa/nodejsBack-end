@@ -72,7 +72,7 @@ app.get("/", function(req, res) {
 
 //app.listen(8000);
 // websocket
-let server = app.listen(8000);
+let server = app.listen(process.env.PORT || 8000);
 
 let io = socketio(server);
 let userCount = 0;
