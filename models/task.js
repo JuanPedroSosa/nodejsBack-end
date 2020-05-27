@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
 		// muchos a muchos
 		Task.belongsToMany(models.Category, {
 			through: "TaskCategories",
-			as: "categories"
+			as: "categories",
+			foreignKey: "categoryId" // esto para postgres
 		})
 		Task.afterCreate(function(task,options) {
 			socket.emit("new_task", task);

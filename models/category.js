@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
 	// muchos a muchos
 	Category.belongsToMany(models.Task, {
 		through: "TaskCategories",
-		as: "tasks"
+		as: "tasks",
+		foreignKey: "taskId" // esto para postgres
 	})
   };
   return Category;
