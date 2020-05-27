@@ -1,0 +1,25 @@
+doctype html
+html
+	head
+		title Bienvenido
+	body
+		h1=user.email
+		p
+			span usuarios conectados:
+			span#connected
+		form(action=`/sessions?_method=DELETE` method="POST")
+			input(type="submit" value="Cerrar sesión")
+		script(src="socket.io/socket.io.js")
+		script.
+			//socket = io.connect() // así se conecta con el mismo servidor
+			// esto es para filtrar por usuario las tareas creadas
+			socket = io.connect(window.location.origin, {query:"loggeduser=#{user.id}"})
+			// socket = io.connect("otroservidor.com")
+			socket.on("count_updated", function(data) {
+				console.log(data);
+				document.querySelector("#connected").innerHTML=data.count;
+			})
+
+			socket.on("new_task", function(data) {
+				console.log(data);
+			})

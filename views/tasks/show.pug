@@ -1,0 +1,13 @@
+doctype html
+html
+	head
+		title Tareas
+	body
+		h1=tarea.description
+		p=tarea.createdAt
+		p
+			strong autor:
+			span=tarea.user.email
+
+		form(action=`/tasks/${tareas.id}?_method=DELETE` method="POST")
+			input(type="submit" value="eliminar")

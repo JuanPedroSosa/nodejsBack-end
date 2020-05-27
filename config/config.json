@@ -1,0 +1,27 @@
+{
+  "development": {
+    "username": null,
+    "password": null,
+    "database": "curso_backend",
+    "host": "127.0.0.1",
+    "dialect": "sqlite",
+	"operatorsAliases": false,
+	"storage": "./curso_backend"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  },
+  "production": {
+    "username": "zeomrqamttills",
+    "password": "0c1f6016a998fe5547c722f9f46ac92d317fbd9e8accb7071f18e4bbcbc36864",
+    "database": "d76htc6pe02kp9",
+    "host": "ec2-18-235-20-228.compute-1.amazonaws.com",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  }
+}
