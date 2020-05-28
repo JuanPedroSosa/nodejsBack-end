@@ -29,11 +29,17 @@ app.use(methodOverride("_method"));
 //}));
 // motor de vistas
 app.set("view engine", "pug")
-app.use(session({
+// guarda por defecto en ram
+let sessionCfg = {
 	secret: ["345fdggfgddgdf56ggh", "fgg56fg34d22as89"],
 	saveUninitialized: false,
 	resave: false
-}));
+}
+// modo producción lo guarda en la tabla session
+if (process.env.NODE_ENV && process.env.NODE_ENV == "production")
+	sessionCfg["store"] = new (require("connect-pg-simple")(session))();
+
+app.use(session());
 // tiene que estar después de la session (stack de middlware)
 // para poder buscar en la sesión
 app.use(findUserMiddleware);
