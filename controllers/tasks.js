@@ -20,11 +20,12 @@ module.exports = {
 	show: function(req, res) {
 		Task.findById(req.params.id, {
 			include: [ // incluir la relación con User (eager loading) la tarea se asocia a un usuario
-				user // esto viene de "as user"
+				user, // esto viene de "as user"
 				// esto es otra manera
 				//{
 				//	model: User
 				//}
+				"categories" // muchos a muchos
 			]
 		}).then(function(task) {
 			//res.json(task);
